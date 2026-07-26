@@ -1,0 +1,6 @@
+@TalentHub.API_HostAddress = http://localhost:5279
+
+GET {{TalentHub.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

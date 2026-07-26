@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../TalentHub.Application/TalentHub.Application.csproj" Id="148de134-4b74-4bc7-b9b7-1f92950f8876" />
+  <Project Path="../TalentHub.Domain/TalentHub.Domain.csproj" Id="317c13de-f62f-4e89-9648-88a702159497" />
+  <Project Path="../TalentHub.Infrastructure/TalentHub.Infrastructure.csproj" Id="0630a920-fd44-4cf8-800b-cb68102adcfd" />
+  <Project Path="TalentHub.API.csproj" />
+</Solution>
