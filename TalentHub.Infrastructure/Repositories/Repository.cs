@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using TalentHub.Application.Interfaces.Repository;
 
 namespace TalentHub.API.Repositories
 {
