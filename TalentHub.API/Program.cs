@@ -1,8 +1,9 @@
 
 using Microsoft.EntityFrameworkCore;
-using TalentHub.Infrastructure.Persistence;
-using TalentHub.Application.Interfaces;
 using TalentHub.API.Repositories;
+using TalentHub.Application.Common.Settings;
+using TalentHub.Application.Interfaces.Repository;
+using TalentHub.Infrastructure.Persistence;
 
 namespace TalentHub.API
 {
@@ -26,8 +27,11 @@ namespace TalentHub.API
              {
                  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
              });
-            // Repository
+            builder.Services.Configure<AppSettings>(
+                builder.Configuration.GetSection("AppSettings"));
+
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
 
             var app = builder.Build();
 

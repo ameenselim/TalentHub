@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace TalentHub.Application.Interfaces
+namespace TalentHub.Application.Interfaces.Repository
 {
     public interface IRepository<T> where T : class
     {
