@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TalentHub.Application.DTOs.Response
 {
-    internal class PagedResponse<T>
+    public class PagedResponse<T>
     {
         public bool Success { get; set; }
 
