@@ -17,7 +17,7 @@ using TalentHub.Domain.Enums.Company;
 
 namespace TalentHub.Infrastructure.Services
 {
-    public class AuthServices
+    public class AuthServices : IAuthServices
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAccountService _accountService;
@@ -195,6 +195,7 @@ namespace TalentHub.Infrastructure.Services
                 Success = true
             };
         }
+        
 
     }
 

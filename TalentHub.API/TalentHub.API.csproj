@@ -4,10 +4,12 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>812e83a8-4c87-4799-beb4-f89a9043c78f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+	  <PackageReference Include="Scalar.AspNetCore" Version="2.16.18" />
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5" />
   </ItemGroup>
