@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TalentHub.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using TalentHub.Infrastructure.Persistence;
 namespace TalentHub.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260820062622_AddApplicationUserOTP")]
+    partial class AddApplicationUserOTP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,9 +211,6 @@ namespace TalentHub.Infrastructure.Persistence.Migrations
                     b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IconPublicId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -313,9 +313,6 @@ namespace TalentHub.Infrastructure.Persistence.Migrations
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 
-                    b.Property<string>("CoverImagePublicId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -349,9 +346,6 @@ namespace TalentHub.Infrastructure.Persistence.Migrations
                     b.Property<string>("Logo")
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
-
-                    b.Property<string>("LogoPublicId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -424,10 +418,6 @@ namespace TalentHub.Infrastructure.Persistence.Migrations
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImagePublicId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -1213,9 +1203,6 @@ namespace TalentHub.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(2048)");
 
                     b.Property<string>("ResumeFile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ResumePublicId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Summary")

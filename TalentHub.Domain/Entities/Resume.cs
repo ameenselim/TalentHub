@@ -17,6 +17,7 @@ namespace TalentHub.Domain.Entities
         public string? LinkedinUrl { get; set; }
 
         public string? ResumeFile { get; set; }
+        public string? ResumePublicId { get; set; }
 
         public int YearsOfExperience { get; set; }
 

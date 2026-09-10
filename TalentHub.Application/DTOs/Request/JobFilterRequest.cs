@@ -6,7 +6,7 @@ using TalentHub.Domain.Enums.Job;
 
 namespace TalentHub.Application.DTOs.Request
 {
-    public class JobFilterRequest
+    public class JobFilterRequest : PaginationRequest
     {
         public string? Keyword { get; set; }
 
@@ -23,5 +23,4 @@ namespace TalentHub.Application.DTOs.Request
 
         public decimal? MaxSalary { get; set; }
     }
-}
 }

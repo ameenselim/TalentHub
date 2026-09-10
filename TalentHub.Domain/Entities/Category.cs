@@ -8,6 +8,7 @@ namespace TalentHub.Domain.Entities
         public string Name { get; set; } = null!;
 
         public string? Icon { get; set; }
+        public string? IconPublicId { get; set; }
 
         //Navigation properties
         public ICollection<Job> Jobs { get; set; } = new HashSet<Job>();

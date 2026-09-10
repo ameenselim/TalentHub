@@ -31,6 +31,7 @@ namespace TalentHub.Infrastructure.Persistence
         public DbSet<JobRequirement> JobRequirements { get; set; } = null!;
         public DbSet<CompanyImage> CompanyImages { get; set; } = null!;
         public DbSet<CompanyFollower> CompanyFollowers { get; set; } = null!;
+        public DbSet<ApplicationUserOTP> ApplicationUserOTPs { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

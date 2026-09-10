@@ -6,6 +6,7 @@
         public int CompanyId { get; set; }
 
         public string ImageUrl { get; set; } = null!;
+        public string ImagePublicId { get; set; } = null!;
 
         public string? Caption { get; set; }
 

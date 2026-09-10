@@ -9,8 +9,10 @@ namespace TalentHub.Domain.Entities
         public string? Description { get; set; }
 
         public string? Logo { get; set; }
+        public string? LogoPublicId { get; set; }
 
         public string? CoverImage { get; set; }
+        public string? CoverImagePublicId { get; set; }
 
         public string? Website { get; set; }
 

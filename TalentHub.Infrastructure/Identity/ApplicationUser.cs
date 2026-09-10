@@ -47,6 +47,9 @@ namespace TalentHub.Infrastructure.Identity
         public ICollection<CompanyMember> CompanyMemberships { get; set; } = new HashSet<CompanyMember>();
 
         public ICollection<Report> Reports { get; set; } = new HashSet<Report>();
+
         public ICollection<CompanyFollower> CompanyFollowers { get; set; } = new HashSet<CompanyFollower>();
+
+        public ICollection<ApplicationUserOTP> ApplicationUserOTPs { get; set; } = new HashSet<ApplicationUserOTP>();
     }
 }
