@@ -10,7 +10,7 @@ namespace TalentHub.Infrastructure.Persistence
         }
         public DbSet<Company> Companies { get; set; } = null!;
         public DbSet<CompanyMember> CompanyMembers { get; set; } = null!;
-        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;    
         public DbSet<Skill> Skills { get; set; } = null!;
         public DbSet<Job> Jobs { get; set; } = null!;
         public DbSet<JobSkill> JobSkills { get; set; } = null!;

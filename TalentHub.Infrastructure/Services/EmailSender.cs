@@ -16,7 +16,7 @@ namespace TalentHub.Infrastructure.Services
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("ameenselim682005@gmail.com", "kziq pvvo pbrl ajtl")
+                Credentials = new NetworkCredential("ameenselim682005@gmail.com", "amgn eurd oqwp pmwg")
             };
 
             return client.SendMailAsync(

@@ -8,13 +8,15 @@ using System.Text;
 using System.Text.Json.Serialization;
 using TalentHub.API.Repositories;
 using TalentHub.Application.Common.Settings;
+using TalentHub.Application.Features.Companies.Commands.DeleteCompany;
 using TalentHub.Application.Interfaces.Repository;
 using TalentHub.Application.Interfaces.Services;
-//using TalentHub.Infrastructure.DbInitializer;
-using TalentHub.Infrastructure.Identity;
 using TalentHub.Infrastructure.Persistence;
 using TalentHub.Infrastructure.Services;
 using TalentHub.Infrastructure.Utilities.DbInitializer;
+using MediatR;
+using TalentHub.Application;
+using TalentHub.Domain.Entities;
 
 namespace TalentHub.API
 {
@@ -83,17 +85,23 @@ namespace TalentHub.API
                     };
                 });
 
-            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            builder.Services.AddScoped<IAuthServices, AuthServices>();
+            //builder.Services.AddScoped<IAuthServices, AuthServices>();
+            //builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+            //builder.Services.AddScoped<ISkillServices, SkillServices>();
+            //builder.Services.AddScoped<IJobServices, JobServices>();
+            //builder.Services.AddScoped<ICompanyServices, CompanyServices>();
+            //builder.Services.AddScoped<ICompanyImageServices, CompanyImageServices>();
+
             builder.Services.AddScoped<ICloudinaryServices, CloudinaryServices>();
-            builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-            builder.Services.AddScoped<ISkillServices, SkillServices>();
-            builder.Services.AddScoped<IJobServices, JobServices>();
-            builder.Services.AddScoped<ICompanyServices, CompanyServices>();
-            builder.Services.AddScoped<ICompanyImageServices, CompanyImageServices>();
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped<IAccountService, AccountServices>();
             builder.Services.AddTransient<IEmailSender, EmailSender>();
+            builder.Services.AddScoped<IProfileServices, ProfileServices>();
+            builder.Services.AddScoped<IJwtService, JwtService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<DbInitializer>();
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DeleteCompanyCommand).Assembly));
+            
             builder.Services.AddControllers().AddJsonOptions(options =>
                     {
                         options.JsonSerializerOptions.Converters.Add(

@@ -7,7 +7,8 @@ namespace TalentHub.Application.Interfaces.Services
 {
     public interface ICloudinaryServices
     {
-        Task<(string Url, string PublicId)> UploadImageAsync(IFormFile file ,string folder, CancellationToken cancellationToken = default);
+        Task<(string Url, string PublicId)> UploadImageAsync(IFormFile file, string folder, CancellationToken cancellationToken = default);
+        Task<(string Url, string PublicId)> UploadRawFileAsync(IFormFile file, string folder, CancellationToken cancellationToken = default);
         Task DeleteAsync(string publicId, CancellationToken cancellationToken = default);
     }
 }

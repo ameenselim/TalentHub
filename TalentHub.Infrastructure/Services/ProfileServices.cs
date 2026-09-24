@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +12,7 @@ using TalentHub.Application.Interfaces.Services;
 namespace TalentHub.Infrastructure.Services
 {
     
-    public class ProfileServices
+    public class ProfileServices : IProfileServices
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IRepository<ApplicationUser> _userRepository;

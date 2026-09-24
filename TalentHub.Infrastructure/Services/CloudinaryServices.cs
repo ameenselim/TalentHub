@@ -21,7 +21,9 @@ namespace TalentHub.Infrastructure.Services
                 [".png"] = new[] { "image/png" },
                 [".webp"] = new[] { "image/webp" }
             };
+        private static readonly string[] AllowedResumeExtensions = { ".pdf", ".doc", ".docx" };
 
+        private const long MaxResumeFileSizeBytes = 10 * 1024 * 1024; // 10MB
         private const long MaxFileSizeBytes = 5 * 1024 * 1024; // 5MB
 
         public CloudinaryServices(IOptions<CloudinarySettings> options, ILogger<CloudinaryServices> logger)
@@ -95,6 +97,58 @@ namespace TalentHub.Infrastructure.Services
             }
 
             _logger.LogInformation("File with PublicId {PublicId} deleted successfully", publicId);
+        }
+        public async Task<(string Url, string PublicId)> UploadRawFileAsync(IFormFile file, string folder, CancellationToken cancellationToken = default)
+        {
+            ValidateRawFile(file);
+
+            await using var stream = file.OpenReadStream();
+
+            var uploadParams = new RawUploadParams
+            {
+                File = new FileDescription(file.FileName, stream),
+                Folder = folder,
+                UseFilename = true,
+                UniqueFilename = true,
+                Overwrite = false
+            };
+
+            RawUploadResult result;
+            try
+            {
+                result = await _cloudinary.UploadAsync(uploadParams, cancellationToken:cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Cloudinary raw upload threw an exception for file {FileName}", file.FileName);
+                throw new CloudinaryUploadException("An error occurred while uploading the file.", ex);
+            }
+
+            if (result.Error != null)
+            {
+                _logger.LogError("Cloudinary raw upload failed for file {FileName}: {Error}", file.FileName, result.Error.Message);
+                throw new CloudinaryUploadException(result.Error.Message);
+            }
+
+            return (result.SecureUrl.ToString(), result.PublicId);
+        }
+
+        private static void ValidateRawFile(IFormFile file)
+        {
+            if (file is null || file.Length == 0)
+                throw new ArgumentException("Invalid file.");
+
+            if (file.Length > MaxResumeFileSizeBytes)
+                throw new ArgumentException(
+                    $"File size exceeds the maximum allowed size of {MaxResumeFileSizeBytes / (1024 * 1024)}MB.");
+
+            var extension = Path.GetExtension(file.FileName);
+
+            if (string.IsNullOrWhiteSpace(extension) ||
+                !AllowedResumeExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Invalid file type. Only PDF, DOC, and DOCX are allowed.");
+            }
         }
 
         private static void ValidateFile(IFormFile file)
